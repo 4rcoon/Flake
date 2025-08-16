@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-CONFIG_DIR="$HOME/.config/sway"
+CONFIG_DIR="$HOME/.config/layout_manager/sway"
 STATE_FILE="$CONFIG_DIR/layout_state"
 NEW_LAYOUT=""
 
