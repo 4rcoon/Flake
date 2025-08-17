@@ -12,28 +12,43 @@ set $mod Mod4
 # Your preferred terminal emulator
 set $term alacritty
 # Your preferred application launcher
-set $menu "rofi -show drun -show-icons"
+set $menu "rofi -show run -show-icons"
 
-### Output configuration
 #
-# (more resolutions are available in @datadir@/backgrounds/sway/)
-output * bg /home/nils.desbonnet/afs/Documents/wallpaper_main.png fill
+# Visuals
 #
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
+
+  output * bg /home/nils.desbonnet/tempwallpaper.jpg fill
+
+  # Gaps
+  default_border pixel 2
+  gaps inner 10
+
+  # Rounded corners
+  corner_radius 18
+
+  # Opacity
+  # for_window [app_id="Alacritty*"] opacity 0.9
+
+  # Blur
+  blur enable
+  blur_xray disable
+  blur_passes 1
+  blur_radius 0
+  blur_noise 0.0
+  blur_brightness 1.0
+  blur_contrast 1.0
+  blur_saturation 1.0
 
 ### Idle configuration
 #
 exec swayidle -w \
 	timeout 300 'swaylock -f -c 000000' \
-	timeout30200 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+	timeout 900 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
 	before-sleep 'swaylock -f -c 000000'
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
+# your displays after another 600 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 ### Key bindings
@@ -57,14 +72,15 @@ exec swayidle -w \
     floating_modifier $mod normal
 
     # Reload the configuration file
-    bindsym $mod+Shift+c reload
+    bindsym $mod+Shift+c reload; 
+    #exec swaynag -t warning -m 'Reloaded Configuration'
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
     # Lock
     bindsym $mod+l exec 'swaylock -f -c 000000'
-    bindsym $mod+semicolon exec 'swaylock -f -c 00000
+    bindsym $mod+semicolon exec 'swaylock -f -c 00000'
 
 #
 # Moving around:
@@ -162,8 +178,7 @@ exec swayidle -w \
     # Special key to take a screenshot with grim
     bindsym Print exec grim
     # Test
-    bindsym $mod+exclam exec border toggle
-
+    include ~/swaytest.conf
 #
 # Status Bar:
 #

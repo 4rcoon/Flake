@@ -17,16 +17,7 @@
 
 
 
-##### SWAY #####
 
-wayland.windowManager.sway = {
-  enable = true;
-  config = rec {
-    modifier = "Mod4";
-    terminal = "alacritty";
-    # startup =  
-  };
-};
 
   
 
@@ -35,20 +26,28 @@ wayland.windowManager.sway = {
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
-    sway
-    wget # utile ?
+    swayfx
+    swayidle
     rofi
+
+    wget # utile ?
     alacritty
     acpi
-    google-chrome
-    parsec-bin
+
+    #gtk4
     pulseaudio
     blueberry
+
+    google-chrome
     vlc
-    libgccjit
     vscode
-    SDL
+
     gh
+
+    python3
+
+    libgccjit
+    SDL
     gnumake
 
 
