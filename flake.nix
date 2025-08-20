@@ -8,13 +8,16 @@
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    astal.url = "github:aylur/astal";
-
-    ags.url = "github:aylur/ags"; 
+    
+    hyprpanel = {
+      url = "github:Jas-SinghFSU/HyprPanel";
+      #inputs.nixpkgs.follows = "nixpkgs";
+    };
+    #astal.url = "github:aylur/astal";
+    #ags.url = "github:aylur/ags"; 
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -23,14 +26,12 @@
         inherit pkgs;
 
         # pass inputs as specialArgs
-        extraSpecialArgs = { inherit inputs; };
+        extraSpecialArgs = { inherit inputs; };   
 
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
         modules = [ ./home.nix ];
 
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
-      };
+        };
     };
 }

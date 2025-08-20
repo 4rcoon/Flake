@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -16,10 +16,11 @@
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
 
+#####  MODULES  #####
 
-
-
-  
+  imports = [
+  ./modules/hyprpanel.nix
+  ];
 
 #####  PACKAGES  #####
 
@@ -111,5 +112,8 @@
   };
 
   # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+  programs = {
+    home-manager.enable = true;
+  };
+
 }
