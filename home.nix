@@ -19,7 +19,7 @@
 #####  MODULES  #####
 
   imports = [
-  ./modules/hyprpanel.nix
+  # ./modules/hyprpanel.nix
   ];
 
 #####  PACKAGES  #####
